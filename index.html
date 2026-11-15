@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>俺の写真館</title>
+<meta name="description" content="旅の途中で出会った、物語のある写真を展示する個人ギャラリー。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2710%27 fill=%27%231c1a18%27/%3E%3Ccircle cx=%2732%27 cy=%2730%27 r=%2712%27 fill=%27%23c9a45c%27/%3E%3Crect x=%2712%27 y=%2746%27 width=%2740%27 height=%272%27 fill=%27%23c9a45c%27/%3E%3C/svg%3E">
+<meta property="og:title" content="俺の写真館">
+<meta property="og:description" content="旅の途中で出会った、物語のある一枚を。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1c1a18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wall:#1c1a18;
+    --wall-deep:#141311;
+    --ink:#ebe5da;
+    --ink-soft:#a39a8d;
+    --line:#3a3530;
+    --plaque:#25221f;
+    --accent:#c9a45c;
+    --serif-ja:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+    --serif-en:"Cormorant Garamond","Times New Roman",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--wall);
+    color:var(--ink);
+    font-family:var(--serif-ja);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.8;
+  }
+  /* うっすら漆喰の壁の質感 */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:3px 3px;
+  }
+  main,header,footer{position:relative;z-index:1}
+
+  /* ===== エントランス ===== */
+  .entrance{
+    min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:12vh 24px 8vh;
+  }
+  .entrance .en{
+    font-family:var(--serif-en);letter-spacing:.42em;font-size:13px;color:var(--ink-soft);
+    text-transform:uppercase;margin-bottom:28px;padding-left:.42em;
+  }
+  .entrance h1{
+    font-weight:600;font-size:clamp(40px,7vw,76px);letter-spacing:.32em;padding-left:.32em;line-height:1.3;
+  }
+  .entrance .rule{width:56px;height:1px;background:var(--ink);margin:36px auto}
+  .entrance p{font-size:15px;color:var(--ink-soft);letter-spacing:.12em}
+  .entrance .enter{
+    margin-top:9vh;font-family:var(--serif-en);font-style:italic;font-size:15px;letter-spacing:.2em;
+    color:var(--ink-soft);text-decoration:none;display:inline-flex;flex-direction:column;align-items:center;gap:14px;
+  }
+  .entrance .enter::after{content:"";width:1px;height:48px;background:var(--ink-soft);animation:drip 2.4s ease-in-out infinite;transform-origin:top}
+  @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+  /* ===== 展示室 ===== */
+  .room{
+    min-height:100vh;padding:5vh 2.5vw 10vh;display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  /* 天井からのスポットライト */
+  .room::before{
+    content:"";position:absolute;left:50%;top:0;width:96vw;height:85%;transform:translateX(-50%);
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,226,170,.18) 0%,rgba(255,226,170,0) 62%);
+    pointer-events:none;
+    -webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%);mask-image:linear-gradient(to bottom,transparent,#000 30%);
+  }
+  .exhibit{
+    position:relative;display:flex;flex-direction:column;align-items:center;gap:56px;width:100%;
+  }
+  .frame{
+    background:#0e0d0c;padding:clamp(8px,1.2vw,18px);outline:1px solid rgba(255,255,255,.05);max-width:100%;
+    box-shadow:0 2px 4px rgba(0,0,0,.4),0 30px 60px -20px rgba(0,0,0,.75),0 80px 120px -60px rgba(0,0,0,.8);
+    cursor:zoom-in;transition:transform .5s ease;
+  }
+  .frame:hover{transform:translateY(-3px)}
+  .frame img{display:block;max-width:100%;width:auto;height:auto;max-height:86vh}
+
+  .plaque{
+    background:var(--plaque);padding:34px 40px 36px;border:1px solid var(--line);
+    width:min(960px,100%);display:grid;grid-template-columns:260px minmax(0,1fr);column-gap:44px;
+    box-shadow:0 14px 30px -16px rgba(0,0,0,.7);
+  }
+  .plaque .no{font-family:var(--serif-en);font-size:13px;letter-spacing:.3em;color:var(--accent)}
+  .plaque h2{font-size:26px;font-weight:800;letter-spacing:.14em;margin:10px 0 2px;line-height:1.5}
+  .plaque .title-en{font-family:var(--serif-en);font-style:italic;font-size:16px;color:var(--ink-soft)}
+  .plaque .meta{
+    font-size:12px;color:var(--ink-soft);letter-spacing:.08em;margin:18px 0 20px;padding:12px 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:2;
+  }
+  .plaque .head{border-right:1px solid var(--line);padding-right:36px}
+  .plaque .meta{border-bottom:none}
+  .plaque .text p{font-size:14.5px;line-height:2.15;letter-spacing:.04em;text-align:justify}
+  .plaque .text p+p{margin-top:.9em}
+
+  /* ===== 作品目録 ===== */
+  .catalog{padding:14vh 6vw 10vh;max-width:1200px;margin:0 auto}
+  .catalog h3{
+    text-align:center;font-weight:600;letter-spacing:.4em;font-size:20px;padding-left:.4em;
+  }
+  .catalog .sub{text-align:center;font-family:var(--serif-en);letter-spacing:.3em;font-size:12px;color:var(--ink-soft);margin:6px 0 48px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:36px}
+  .grid a{text-decoration:none;color:inherit}
+  .grid .thumb{background:#0e0d0c;padding:6px;box-shadow:0 14px 30px -16px rgba(0,0,0,.8);aspect-ratio:4/3;overflow:hidden}
+  .grid .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .grid a:hover .thumb img{transform:scale(1.04)}
+  .grid .cap{margin-top:12px;font-size:14px;letter-spacing:.1em}
+  .grid .cap span{display:block;font-family:var(--serif-en);font-size:12px;color:var(--ink-soft);letter-spacing:.2em}
+
+  footer{
+    text-align:center;padding:60px 24px 70px;font-family:var(--serif-en);font-size:12px;letter-spacing:.25em;color:var(--ink-soft);
+    border-top:1px solid var(--line);margin:0 6vw;
+  }
+
+  /* ===== 拡大表示 ===== */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(16,14,12,.96);z-index:50;display:none;
+    align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;animation:fade .35s ease}
+  .lightbox img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lightbox .close{
+    position:absolute;top:18px;right:22px;color:#d9d2c6;font-family:var(--serif-en);font-size:14px;letter-spacing:.3em;
+    background:none;border:none;cursor:pointer;
+  }
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+
+  /* 入場時のふわっと表示 */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s ease,transform 1.2s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .exhibit{gap:28px}
+    .plaque{grid-template-columns:1fr;padding:28px 24px 30px;max-width:560px}
+    .plaque .head{border-right:none;padding-right:0}
+    .plaque .meta{border-bottom:1px solid var(--line)}
+    .room{padding:6vh 2vw 8vh;min-height:auto}
+    .frame{padding:6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .entrance .enter::after{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="entrance">
+  <div class="en">Photo Museum</div>
+  <h1>俺の写真館</h1>
+  <div class="rule"></div>
+  <p>旅の途中で出会った、物語のある一枚を。</p>
+  <a class="enter" href="#halls">Enter</a>
+</header>
+
+<main id="halls"></main>
+
+<section class="catalog" id="catalog">
+  <h3>作品目録</h3>
+  <div class="sub">CATALOGUE</div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>© <span id="year"></span> 俺の写真館 — All photographs are the property of the artist.</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="作品の拡大表示">
+  <button class="close" aria-label="閉じる">CLOSE ✕</button>
+  <img alt="">
+</div>
+
+<script src="works.js"></script>
+<script>
+(function(){
+  var works = window.WORKS || [];
+  var halls = document.getElementById('halls');
+  var grid = document.getElementById('grid');
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+  works.forEach(function(w){
+    var paras = String(w.text||'').split(/\n\s*\n/).map(function(p){return '<p>'+esc(p).replace(/\n/g,'<br>')+'</p>'}).join('');
+    var meta = [w.date,w.place,w.camera].filter(Boolean).map(esc).join('<br>');
+    var room = document.createElement('section');
+    room.className='room';
+    room.id='work-'+w.id;
+    room.innerHTML =
+      '<div class="exhibit reveal">'+
+        '<figure class="frame" tabindex="0" aria-label="拡大して見る"><img src="'+esc(w.image)+'" alt="'+esc(w.alt||w.title)+'" loading="lazy"></figure>'+
+        '<aside class="plaque">'+
+          '<div class="head"><div class="no">No. '+esc(w.id)+'</div>'+
+          '<h2>'+esc(w.title)+'</h2>'+
+          (w.titleEn?'<div class="title-en">'+esc(w.titleEn)+'</div>':'')+
+          '<div class="meta">'+meta+'</div></div>'+
+          '<div class="text">'+paras+'</div>'+
+        '</aside>'+
+      '</div>';
+    halls.appendChild(room);
+
+    var a=document.createElement('a');
+    a.href='#work-'+w.id;
+    a.innerHTML='<div class="thumb"><img src="'+esc(w.image)+'" alt="" loading="lazy"></div><div class="cap">'+esc(w.title)+'<span>No. '+esc(w.id)+'</span></div>';
+    grid.appendChild(a);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ふわっと表示
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+
+  // 拡大表示
+  var lb=document.getElementById('lightbox'), lbImg=lb.querySelector('img');
+  function open(img){lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden'}
+  function close(){lb.classList.remove('open');document.body.style.overflow=''}
+  halls.addEventListener('click',function(e){var f=e.target.closest('.frame');if(f)open(f.querySelector('img'))});
+  halls.addEventListener('keydown',function(e){var f=e.target.closest('.frame');if(f&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(f.querySelector('img'))}});
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+
+  // #work-xxx で直接その作品へ
+  function go(){var h=location.hash.slice(1);if(h){var t=document.getElementById(h);if(t)t.scrollIntoView()}}
+  window.addEventListener('hashchange',go); if(location.hash) setTimeout(go,50);
+})();
+</script>
+</body>
+</html>
