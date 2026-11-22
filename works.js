@@ -72,7 +72,7 @@ window.WORKS = [
     "titleEn": "Living with Sakurajima",
     "date": "2024.07",
     "place": "鹿児島 城山",
-    "camera": "Google Pixel",
+    "camera": "Google Pixel 7",
     "image": "photos/006-sakurajima.jpg",
     "alt": "夕暮れの青い時間。灯りのともる鹿児島の街の向こうに、雲の帽子をかぶった桜島。",
     "text": "鹿児島の街は、桜島を中心に回っている。\n\n天気予報には降灰予報が並び、人々は灰を払いながら暮らす。それでも誰ひとり、この山から目を逸らさない。\n\n城山に着いた頃には、陽はとうに沈んでいた。街に灯りがともり、桜島は雲の帽子を目深にかぶっている。\n\n今日も、この街は桜島と生きている。"
@@ -94,7 +94,7 @@ window.WORKS = [
     "titleEn": "Today's Leading Role",
     "date": "2024.07",
     "place": "霧島",
-    "camera": "Google Pixel",
+    "camera": "Google Pixel 7",
     "image": "photos/008-natsu-kumo.jpg",
     "alt": "霧島の高台から。空いっぱいの夏の雲、緑の山並みと高架橋、地平線に小さな桜島。",
     "text": "主役は桜島のはずだった。\n\nだが空を見上げれば、夏の雲が好き放題に湧いている。桜島は地平線の端で、すっかり小さくなっていた。\n\nハンドルを握るたびに、こういう景色に出会う。だから、また握る。\n\n今日の主役は、雲に譲ろう。"
