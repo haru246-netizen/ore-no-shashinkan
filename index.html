@@ -117,6 +117,10 @@
   .grid .cap{margin-top:12px;font-size:14px;letter-spacing:.1em}
   .grid .cap span{display:block;font-family:var(--serif-en);font-size:12px;color:var(--ink-soft);letter-spacing:.2em}
 
+  .plaque .back{display:inline-block;margin-top:22px;font-size:12px;letter-spacing:.2em;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .plaque .back:hover{color:var(--accent);border-color:var(--accent)}
+  .catalog{padding-bottom:6vh}
+
   footer{
     text-align:center;padding:60px 24px 70px;font-family:var(--serif-en);font-size:12px;letter-spacing:.25em;color:var(--ink-soft);
     border-top:1px solid var(--line);margin:0 6vw;
@@ -160,16 +164,17 @@
   <h1>俺の写真館</h1>
   <div class="rule"></div>
   <p>旅の途中で出会った、物語のある一枚を。</p>
-  <a class="enter" href="#halls">Enter</a>
+  <a class="enter" href="#catalog">Enter</a>
 </header>
-
-<main id="halls"></main>
 
 <section class="catalog" id="catalog">
   <h3>作品目録</h3>
   <div class="sub">CATALOGUE</div>
   <div class="grid" id="grid"></div>
 </section>
+
+<main id="halls"></main>
+
 
 <footer>© <span id="year"></span> 俺の写真館 — All photographs are the property of the artist.</footer>
 
@@ -200,7 +205,7 @@
           '<h2>'+esc(w.title)+'</h2>'+
           (w.titleEn?'<div class="title-en">'+esc(w.titleEn)+'</div>':'')+
           '<div class="meta">'+meta+'</div></div>'+
-          '<div class="text">'+paras+'</div>'+
+          '<div class="text">'+paras+'<a class="back" href="#catalog">↑ 作品目録へ</a></div>'+
         '</aside>'+
       '</div>';
     halls.appendChild(room);
